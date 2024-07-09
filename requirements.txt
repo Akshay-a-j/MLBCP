@@ -1,4 +1,6 @@
-pandas 
+pandas
+seaborn 
+imblearn
 mlflow==2.2.2
 notebook
 numpy
