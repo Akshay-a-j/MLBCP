@@ -15,3 +15,11 @@ data_validation:
 data_transformation:
   root_dir: artifacts/data_transformation
   data_path: artifacts/data_ingestion/data.csv
+
+model_trainer:
+  root_dir: artifacts/data_transformation
+  X_train_path: artifacts/data_transformation/X_train_resampled.csv
+  Y_train_path: artifacts/data_transformation/y_train_resampled.csv
+  model_name: model.joblib
+
+

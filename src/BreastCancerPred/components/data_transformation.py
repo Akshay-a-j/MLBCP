@@ -4,6 +4,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from imblearn.over_sampling import SMOTE
 import logging
+import os
 
 class DataTransformation:
     def __init__(self, config: DataTransformationConfig):
@@ -40,6 +41,11 @@ class DataTransformation:
         smote = SMOTE(random_state=42)
         X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
         y_train_resampled.value_counts(normalize=True)
+
+        X_train_resampled.to_csv(os.path.join(self.config.root_dir, "X_train_resampled.csv"), index= False)
+        y_train_resampled.to_csv(os.path.join(self.config.root_dir, "y_train_resampled.csv"), index= False)
+        X_test.to_csv(os.path.join(self.config.root_dir, "X_test.csv"), index= False)
+        y_test.to_csv(os.path.join(self.config.root_dir, "y_test.csv"), index= False)
 
 
         logging.info("Splited data into training and test sets")

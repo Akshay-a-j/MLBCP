@@ -20,3 +20,10 @@ class DataValidationConfig:
 class DataTransformationConfig:
     root_dir: Path
     data_path: Path
+
+@dataclass
+class ModelTrainerConfig:
+    root_dir: Path
+    X_train_path: Path
+    Y_train_path: Path
+    model_name: str
