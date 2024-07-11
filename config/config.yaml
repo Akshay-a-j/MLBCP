@@ -17,9 +17,15 @@ data_transformation:
   data_path: artifacts/data_ingestion/data.csv
 
 model_trainer:
-  root_dir: artifacts/data_transformation
+  root_dir: artifacts/Model_trainer
   X_train_path: artifacts/data_transformation/X_train_resampled.csv
   Y_train_path: artifacts/data_transformation/y_train_resampled.csv
   model_name: model.joblib
+
+model_evaluation:
+  root_dir: artifacts/Model_evaluation
+  X_test_path: artifacts/data_transformation/X_test.csv
+  Y_test_path: artifacts/data_transformation/y_test.csv
+  model_path: artifacts/Model_trainer/model.joblib
 
 

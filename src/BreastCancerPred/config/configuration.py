@@ -1,6 +1,6 @@
 from BreastCancerPred.constatnts import *
 from BreastCancerPred.utils.common import read_yaml, create_directories
-from BreastCancerPred.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataTransformationConfig, ModelTrainerConfig
+from BreastCancerPred.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataTransformationConfig, ModelTrainerConfig, ModelEValuationConfig
 
 
 class ConfigurationManager:
@@ -71,3 +71,17 @@ class ConfigurationManager:
         )
 
         return model_trainer_config
+    
+    def get_model_evaluation(self) -> ModelEValuationConfig:
+        config = self.config.model_evaluation
+
+        create_directories([config.root_dir])
+
+        model_evaluation_config = ModelEValuationConfig(
+            root_dir= config.root_dir,
+            X_test_path= config.X_test_path,
+            Y_test_path= config.Y_test_path,
+            model_path= config.model_path
+        )
+
+        return model_evaluation_config

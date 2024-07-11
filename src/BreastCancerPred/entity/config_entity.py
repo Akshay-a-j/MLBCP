@@ -27,3 +27,10 @@ class ModelTrainerConfig:
     X_train_path: Path
     Y_train_path: Path
     model_name: str
+
+@dataclass
+class ModelEValuationConfig:
+    root_dir: Path 
+    X_test_path: Path
+    Y_test_path: Path
+    model_path: Path
