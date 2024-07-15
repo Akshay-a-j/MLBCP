@@ -13,6 +13,14 @@ class DataValidation:
             data = pd.read_csv(self.config.unzip_data_dir)
             all_cols = list(data.columns)
 
+            empty_columns = [col for col in all_cols if data[col].isnull().all()]
+
+            # Print empty columns
+            print("Empty Columns:", empty_columns)
+
+            # Drop empty columns
+            data_cleaned = data.drop(columns=empty_columns)
+            all_cols = list(data_cleaned.columns)
             all_schema = self.config.all_schema.keys()
 
 
@@ -25,5 +33,8 @@ class DataValidation:
                     print(validation_status, col)
             with open(self.config.STATUS_FILE, 'w') as f:
                 f.write(f"validation status: {validation_status}")
+            #saving back the cleaned data to original path
+            if validation_status == True:
+                data_cleaned.to_csv(self.config.unzip_data_dir)
         except Exception as e:
             raise e

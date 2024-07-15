@@ -12,10 +12,6 @@ tqdm
 ensure==1.0.2import
 joblib
 types-PyYAML
-Flask
-Flask-Cors
-torch
-torchvision
-category-encoders
-transformers
+fastapi
+uvicorn
 -e .
